@@ -1,2 +1,2 @@
 # Hospital
-Game where you must save pacient. I'm using library PyGame.
+Game where you must save pacient. I'm used library PyGame.
