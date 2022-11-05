@@ -7,10 +7,10 @@ pygame.init()
 clock = pygame.time.Clock()
 fps = 60
 size = (640, 480)
-Person_skin = {1:R'Grafics\DoctorFL.png', 
-	2:R'Grafics\DoctorSL.png', 
-	3:R'Grafics\DoctorTL.png', 
-	4:R'Grafics\DoctorFoL.png'}
+Person_skin = {1:R'Grafics/DoctorFL.png', 
+	2:R'Grafics/DoctorSL.png', 
+	3:R'Grafics/DoctorTL.png', 
+	4:R'Grafics/DoctorFoL.png'}
 
 lone = pygame.Rect(218, 95, 47, 188)
 pacient = pygame.Rect(136, 100, 79, 132)
@@ -34,7 +34,7 @@ class Enemi(pygame.sprite.Sprite):
 		self.live = True
 		self.pacient_live = True
 		self.HP = 2
-		self.step_num = 0
+		self.Step_num = 0
 		self.attack = 0
 		self.local = location
 		self.rect.left, self.rect.top = location
@@ -52,19 +52,19 @@ class Enemi(pygame.sprite.Sprite):
 	def UPDATE(self):
 		
 		if(self.live):
-			self.step_num += 1
+			self.Step_num += 1
 			self.rect.left -= 1
 
-			while(self.step_num > 30):
-				self.step_num -= 30
+			while(self.Step_num > 30):
+				self.Step_num -= 30
 
-			if(self.step_num <= 15):
+			if(self.Step_num <= 15):
 				self.image = pygame.image.load(
-					R'Grafics\EnemiStep2.png')
+					R'Grafics/EnemiStep2.png')
 
 			else:
 				self.image = pygame.image.load(
-					R'Grafics\EnemiStep1.png')
+					R'Grafics/EnemiStep1.png')
 
 			if(lone.collidepoint(
 					self.rect.left - 10, self.rect.top) or
@@ -75,8 +75,8 @@ class Enemi(pygame.sprite.Sprite):
 					self.rect.left += 1
 					self.rect.top -= 1
 
-					while(self.step_num > 30):
-						self.step_num -= 30
+					while(self.Step_num > 30):
+						self.Step_num -= 30
 		
 				else:
 					self.rect.left += 1
@@ -126,19 +126,19 @@ class Enemi(pygame.sprite.Sprite):
 
 				if(self.attack <= 10):
 					self.image = pygame.image.load(
-						R'Grafics\EnemiAttack1.png')
+						R'Grafics/EnemiAttack1.png')
 		
 				elif(self.attack <= 20):
 					self.image = pygame.image.load(
-						R'Grafics\EnemiAttack2.png')
+						R'Grafics/EnemiAttack2.png')
 		
 				elif(self.attack <= 30):
 					self.image = pygame.image.load(
-						R'Grafics\EnemiAttack3.png')
+						R'Grafics/EnemiAttack3.png')
 
 				else:
 					self.image = pygame.image.load(
-						R'Grafics\EnemiAttack4.png')
+						R'Grafics/EnemiAttack4.png')
 
 			elif((self.rect.left - pacient.left) == 
 				abs(pacient.top - self.rect.top)):
@@ -172,19 +172,19 @@ class Enemi(pygame.sprite.Sprite):
 				pass
 		
 		else:
-			self.step_num += 1
+			self.Step_num += 1
 
-			if(self.step_num <= 10):
+			if(self.Step_num <= 10):
 				self.image = pygame.image.load(
-					R'Grafics\EnemiDie1.png')
+					R'Grafics/EnemiDie1.png')
 		
-			elif(self.step_num <= 20):
+			elif(self.Step_num <= 20):
 				self.image = pygame.image.load(
-					R'Grafics\EnemiDie2.png')
+					R'Grafics/EnemiDie2.png')
 		
-			elif(self.step_num <= 30):
+			elif(self.Step_num <= 30):
 				self.image = pygame.image.load(
-					R'Grafics\EnemiDie3.png')
+					R'Grafics/EnemiDie3.png')
 
 			else:
 				pass
@@ -224,19 +224,19 @@ class DrobBullet(pygame.sprite.Sprite):
 	def __init__(self, location):
 		pygame.sprite.Sprite.__init__(self)
 		self.image = pygame.image.load(
-			R'Grafics\DrobBullet1.png')
+			R'Grafics/DrobBullet1.png')
 		self.cadr_image = {
-			1:R'Grafics\DrobBullet1.png',
-			2:R'Grafics\DrobBullet2.png',
-			3:R'Grafics\DrobBullet3.png',
-			4:R'Grafics\DrobBullet4.png',
-			5:R'Grafics\DrobBullet5.png',
-			6:R'Grafics\DrobBullet6.png'}
+			1:R'Grafics/DrobBullet1.png',
+			2:R'Grafics/DrobBullet2.png',
+			3:R'Grafics/DrobBullet3.png',
+			4:R'Grafics/DrobBullet4.png',
+			5:R'Grafics/DrobBullet5.png',
+			6:R'Grafics/DrobBullet6.png'}
 		self.rect = self.image.get_rect()
 		self.hot = False
 		self.local = location
 		self.rect.left, self.rect.top = location
-		self.num_step = 0
+		self.num_Step = 0
 		self.start_left = 0
 
 	def LOCATION(self, location_left, location_top):
@@ -244,36 +244,36 @@ class DrobBullet(pygame.sprite.Sprite):
 		self.start_left += 115
 		self.rect.left += 115
 		self.rect.top += 39
-		self.num_step = 0
+		self.num_Step = 0
 
 	def UPDATE(self):
 
 		if(self.hot):
 			self.rect.left += 15
-			self.num_step += 1
+			self.num_Step += 1
 
-			if(self.num_step <= 2):
+			if(self.num_Step <= 2):
 				self.image = pygame.image.load(self.cadr_image[1])
 
-			elif(self.num_step <= 4):
+			elif(self.num_Step <= 4):
 				self.image = pygame.image.load(self.cadr_image[2])
 
-			elif(self.num_step <= 6):
+			elif(self.num_Step <= 6):
 				self.image = pygame.image.load(self.cadr_image[3])
 
-			elif(self.num_step <= 8):
+			elif(self.num_Step <= 8):
 				self.image = pygame.image.load(self.cadr_image[4])
 
-			elif(self.num_step <= 10):
+			elif(self.num_Step <= 10):
 				self.image = pygame.image.load(self.cadr_image[5])
 
-			elif(self.num_step <= 12):
+			elif(self.num_Step <= 12):
 				self.image = pygame.image.load(self.cadr_image[6])
 
 			else:
 				pass
 
-			if(self.num_step > 12 or 
+			if(self.num_Step > 12 or 
 				lone.collidepoint(
 					self.rect.left + 8, self.rect.top + 3)):
 				self.rect.left, self.rect.top = self.local
@@ -291,25 +291,25 @@ class Texture(pygame.sprite.Sprite):
 		self.image = pygame.image.load(image_file)
 		self.rect = self.image.get_rect()
 		self.Step = False
-		self.step_num = int(0)
+		self.Step_num = int(0)
 		self.rect.left, self.rect.top = location
 
 	def UPDATE(self, location):
 		self.rect.left, self.rect.top = location
 
 		if(self.Step):
-			self.step_num += 1
+			self.Step_num += 1
 
-			while(self.step_num > 30):
-				self.step_num -= 30
+			while(self.Step_num > 30):
+				self.Step_num -= 30
 
-			if(self.step_num <= 15):
+			if(self.Step_num <= 15):
 				self.image = pygame.image.load(
-					R'Grafics\Step2.png')
+					R'Grafics/Step2.png')
 
 			else:
 				self.image = pygame.image.load(
-					R'Grafics\Step3.png')
+					R'Grafics/Step3.png')
 
 		else:
 			pass
@@ -457,34 +457,34 @@ class Person(pygame.sprite.Sprite):
 
 		else:
 			END = Texture(
-				R'Grafics\YES.png', [self.rect.left - 70, self.rect.top - 60])
+				R'Grafics/YES.png', [self.rect.left - 70, self.rect.top - 60])
 			screen.blit(END.image, END.rect)
-			self.image = pygame.image.load(R'Grafics\DoctorDead.png')
+			self.image = pygame.image.load(R'Grafics/DoctorDead.png')
 
 def FirstLevel():
 
 	pacient_live = True
 
-	step = int(0)
+	Step = int(0)
 	num = int(0)
 	live_enems = int(8)
 
 	lone.left, lone.top = 218, 95
 	pacient.left, pacient.top = 136, 100
 	LOSE = Texture(
-		R'Grafics\LoseMenu.png', [0, 0])
+		R'Grafics/LoseMenu.png', [0, 0])
 	WIN = Texture(
-		R'Grafics\WinMenu.png', [0, 0])
+		R'Grafics/WinMenu.png', [0, 0])
 	Style = Texture(
-		R'Grafics\Style.png', [0, 0])	
+		R'Grafics/Style.png', [0, 0])	
 	END = Texture(
-		R'Grafics\END.png', [0, 0])
+		R'Grafics/END.png', [0, 0])
 	BackGround = Texture(
-		R'Grafics\flatFL.jpg', [0, 0])
+		R'Grafics/flatFL.jpg', [0, 0])
 	character = Person(
 		Person_skin[1], [30, 185])
 	leg = Texture(
-		R'Grafics\Step1.png', 
+		R'Grafics/Step1.png', 
 		[character.rect.left, character.rect.top])
 
 	Bullets = []
@@ -492,12 +492,12 @@ def FirstLevel():
 
 	for i in range(0, 8, 1):
 		Enemis.append(Enemi(
-			R'Grafics\EnemiStep1.png', 
+			R'Grafics/EnemiStep1.png', 
 			[800 + (i * randint(40, 150)), randint(10, 370)]))
 
 	for i in range(0, 4, 1):
 		Bullets.append(Bullet(
-			R'Grafics\Bullet.png', 
+			R'Grafics/Bullet.png', 
 			[character.rect.left, character.rect.top]))
 
 	while True:
@@ -588,7 +588,7 @@ def FirstLevel():
 					character.moving_down = False
 				leg.Step = False
 				leg.image = pygame.image.load(
-					R'Grafics\step1.png')
+					R'Grafics/Step1.png')
 
 			else:
 				pass
@@ -689,10 +689,10 @@ def FirstLevel():
 			num += 1
 		
 			if(num % 60 == 0 or (num - 1) % 60 == 0):
-				character.image = pygame.image.load(R'Grafics\DoctorFLMG.png')
+				character.image = pygame.image.load(R'Grafics/DoctorFLMG.png')
 		
 			else:
-				character.image = pygame.image.load(R'Grafics\DoctorFL.png')
+				character.image = pygame.image.load(R'Grafics/DoctorFL.png')
 
 			if(live_enems <= 0):
 				screen.blit(WIN.image, WIN.rect)
@@ -701,7 +701,7 @@ def FirstLevel():
 				pass
 
 		else:
-			character.image = pygame.image.load(R'Grafics\DoctorDead.png')
+			character.image = pygame.image.load(R'Grafics/DoctorDead.png')
 			screen.blit(LOSE.image, LOSE.rect)
 
 		pygame.display.update()
@@ -713,27 +713,27 @@ def FirstLevel():
 def SecondLevel():
 	live_enems = 8
 
-	step = int(0)
+	Step = int(0)
 	num = int(0)
 
 	lone.left, lone.top = 223, 7
 	pacient.left, pacient.top = 136, 12 
 	LOSE = Texture(
-		R'Grafics\LoseMenu.png', [0, 0])
+		R'Grafics/LoseMenu.png', [0, 0])
 	WIN = Texture(
-		R'Grafics\WinMenu.png', [0, 0])
+		R'Grafics/WinMenu.png', [0, 0])
 	YES = Texture(
-		R'Grafics\YES.png', [0, 0])
+		R'Grafics/YES.png', [0, 0])
 	END = Texture(
-		R'Grafics\END.png', [0, 0])
+		R'Grafics/END.png', [0, 0])
 	Style = Texture(
-		R'Grafics\Style.png', [0, 0])	
+		R'Grafics/Style.png', [0, 0])	
 	BackGround = Texture(
-		R'Grafics\flatSL.jpg', [0, 0])
+		R'Grafics/flatSL.jpg', [0, 0])
 	character = Person(
 		Person_skin[2], [30, 185])
 	leg = Texture(
-		R'Grafics\Step1.png', 
+		R'Grafics/Step1.png', 
 		[character.rect.left, character.rect.top])
 
 	Bullets = []
@@ -741,12 +741,12 @@ def SecondLevel():
 
 	for i in range(0, 8, 1):
 		Enemis.append(Enemi(
-			R'Grafics\EnemiStep1.png', 
+			R'Grafics/EnemiStep1.png', 
 			[800 + (i * randint(40, 150)), randint(10, 370)]))
 
 	for i in range(0, 4, 1):
 		Bullets.append(Bullet(
-			R'Grafics\Bullet.png', 
+			R'Grafics/Bullet.png', 
 			[character.rect.left, character.rect.top]))
 
 	while True:
@@ -832,7 +832,7 @@ def SecondLevel():
 					character.moving_down = False
 				leg.Step = False
 				leg.image = pygame.image.load(
-					R'Grafics\step1.png')
+					R'Grafics/Step1.png')
 
 			else:
 				pass
@@ -936,10 +936,10 @@ def SecondLevel():
 			num += 1
 		
 			if(num % 60 == 0 or (num - 1) % 60 == 0):
-				character.image = pygame.image.load(R'Grafics\DoctorSLMG.png')
+				character.image = pygame.image.load(R'Grafics/DoctorSLMG.png')
 		
 			else:
-				character.image = pygame.image.load(R'Grafics\DoctorSL.png')
+				character.image = pygame.image.load(R'Grafics/DoctorSL.png')
 
 			if(live_enems <= 0):
 				screen.blit(WIN.image, WIN.rect)
@@ -948,7 +948,7 @@ def SecondLevel():
 				pass
 
 		else:
-			character.image = pygame.image.load(R'Grafics\DoctorDead.png')
+			character.image = pygame.image.load(R'Grafics/DoctorDead.png')
 			screen.blit(LOSE.image, LOSE.rect)
 
 		pygame.display.update()
@@ -960,24 +960,24 @@ def SecondLevel():
 def ThirdLevel():
 	live_enems = 8
 
-	step = int(0)
+	Step = int(0)
 	num = int(0)
 	LOSE = Texture(
-		R'Grafics\LoseMenu.png', [0, 0])
+		R'Grafics/LoseMenu.png', [0, 0])
 	lone.left, lone.top = 402, 134
 	pacient.left, pacient.top = 317, 162 
 	Style = Texture(
-		R'Grafics\Style.png', [0, 0])
+		R'Grafics/Style.png', [0, 0])
 	WIN = Texture(
-		R'Grafics\WinMenu.png', [0, 0])
+		R'Grafics/WinMenu.png', [0, 0])
 	END = Texture(
-		R'Grafics\END.png', [0, 0])
+		R'Grafics/END.png', [0, 0])
 	BackGround = Texture(
-		R'Grafics\flatTL.jpg', [0, 0])
+		R'Grafics/flatTL.jpg', [0, 0])
 	character = Person(
 		Person_skin[3], [30, 185])
 	leg = Texture(
-		R'Grafics\Step1.png', 
+		R'Grafics/Step1.png', 
 		[character.rect.left, character.rect.top])
 	Bullet = DrobBullet([0, 0])
 
@@ -985,7 +985,7 @@ def ThirdLevel():
 
 	for i in range(0, 8, 1):
 		Enemis.append(Enemi(
-			R'Grafics\EnemiStep1.png', 
+			R'Grafics/EnemiStep1.png', 
 			[800 + (i * randint(40, 150)), 
 				randint(10, 370)]))
 
@@ -1076,7 +1076,7 @@ def ThirdLevel():
 					character.moving_down = False
 				leg.Step = False
 				leg.image = pygame.image.load(
-					R'Grafics\step1.png')
+					R'Grafics/Step1.png')
 
 			else:
 				pass
@@ -1174,10 +1174,10 @@ def ThirdLevel():
 			num += 1
 		
 			if(num % 60 == 0 or (num - 1) % 60 == 0):
-				character.image = pygame.image.load(R'Grafics\DoctorTLMG.png')
+				character.image = pygame.image.load(R'Grafics/DoctorTLMG.png')
 		
 			else:
-				character.image = pygame.image.load(R'Grafics\DoctorTL.png')
+				character.image = pygame.image.load(R'Grafics/DoctorTL.png')
 
 			if(live_enems <= 0):
 				screen.blit(WIN.image, WIN.rect)
@@ -1186,7 +1186,7 @@ def ThirdLevel():
 				pass
 
 		else:
-			character.image = pygame.image.load(R'Grafics\DoctorDead.png')
+			character.image = pygame.image.load(R'Grafics/DoctorDead.png')
 			screen.blit(LOSE.image,LOSE.rect)
 
 		pygame.display.update()
@@ -1198,33 +1198,33 @@ def ThirdLevel():
 def FouthLevel():
 	live_enems = 8
 
-	step = int(0)
+	Step = int(0)
 	num = int(0)
 	LOSE = Texture(
-		R'Grafics\LoseMenu.png', [0, 0])
+		R'Grafics/LoseMenu.png', [0, 0])
 	lone.left, lone.top = -50, 500
 	pacient.left, pacient.top = 136, 100
 	Style = Texture(
-		R'Grafics\Style.png', [0, 0])
+		R'Grafics/Style.png', [0, 0])
 	WIN = Texture(
-		R'Grafics\WinMenu.png', [0, 0])
+		R'Grafics/WinMenu.png', [0, 0])
 	END = Texture(
-		R'Grafics\END.png', [0, 0])	
+		R'Grafics/END.png', [0, 0])	
 	BackGround = Texture(
-		R'Grafics\flatFoL.jpg', [0, 0])
+		R'Grafics/flatFoL.jpg', [0, 0])
 	character = Person(
 		Person_skin[1], [30, 185])
 	leg = Texture(
-		R'Grafics\Step1.png', 
+		R'Grafics/Step1.png', 
 		[character.rect.left, character.rect.top])
 	Bulllet = Bullet(
-			R'Grafics\Bullet.png', [0, 0])
+			R'Grafics/Bullet.png', [0, 0])
 	
 	Enemis = []
 
 	for i in range(0, 8, 1):
 		Enemis.append(Enemi(
-			R'Grafics\EnemiStep1.png', 
+			R'Grafics/EnemiStep1.png', 
 			[800 + (i * randint(40, 150)), randint(10, 370)]))
 
 	while True:
@@ -1314,7 +1314,7 @@ def FouthLevel():
 					character.moving_down = False
 				leg.Step = False
 				leg.image = pygame.image.load(
-					R'Grafics\step1.png')
+					R'Grafics/Step1.png')
 
 			else:
 				pass
@@ -1400,10 +1400,10 @@ def FouthLevel():
 			num += 1
 		
 			if(num % 60 == 0 or (num - 1) % 60 == 0):
-				character.image = pygame.image.load(R'Grafics\DoctorFoLMG.png')
+				character.image = pygame.image.load(R'Grafics/DoctorFoLMG.png')
 		
 			else:
-				character.image = pygame.image.load(R'Grafics\DoctorFoL.png')
+				character.image = pygame.image.load(R'Grafics/DoctorFoL.png')
 
 			if(live_enems <= 0):
 				screen.blit(WIN.image, WIN.rect)
@@ -1412,7 +1412,7 @@ def FouthLevel():
 				pass
 
 		else:
-			character.image = pygame.image.load(R'Grafics\DoctorDead.png')
+			character.image = pygame.image.load(R'Grafics/DoctorDead.png')
 			screen.blit(LOSE.image, LOSE.rect)
 
 		pygame.display.update()

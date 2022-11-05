@@ -22,19 +22,19 @@ class Texture(pygame.sprite.Sprite):
         self.rect.left, self.rect.top = location
 
 BackGround = Texture(
-    R'Grafics\SelectLevelGround.png', [0, 0])
+    R'Grafics/SelectLevelGround.png', [0, 0])
 AK47 = Texture(
-    R'Grafics\AK47.png', [60, 150])
+    R'Grafics/AK47.png', [60, 150])
 M4A4 = Texture(
-    R'Grafics\M4A4.png', [270, 120])
+    R'Grafics/M4A4.png', [270, 120])
 SATS = Texture(
-    R'Grafics\SATS.png', [270, 260])
+    R'Grafics/SATS.png', [270, 260])
 pistol = Texture(
-    R'Grafics\pistol.png', [270, 380])
+    R'Grafics/pistol.png', [270, 380])
 Croses = (
-    Texture(R'Grafics\NoLevel.png', [245, 60]),
-    Texture(R'Grafics\NoLevel.png', [245, 191]),
-    Texture(R'Grafics\NoLevel.png', [245, 321]))
+    Texture(R'Grafics/NoLevel.png', [245, 60]),
+    Texture(R'Grafics/NoLevel.png', [245, 191]),
+    Texture(R'Grafics/NoLevel.png', [245, 321]))
 
 back_menu = pygame.Rect(43, 390, 155, 50)
 level_first = pygame.Rect(43, 58, 160, 320)

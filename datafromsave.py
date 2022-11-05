@@ -1,5 +1,5 @@
 data = []
-file_name = str(R'Save\SaveLV.txt')
+file_name = str(R'Save/SaveLV.txt')
 
 with open(file_name) as file:
 	line = file.readlines()

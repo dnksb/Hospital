@@ -5,7 +5,7 @@ from selectlevel import SelectLevel
 from datafromsave import level
 
 def SaveData(level1):
-    file_name_save = (R'Save\SaveLV.txt')
+    file_name_save = (R'Save/SaveLV.txt')
     print(file_name_save)
 
     with open(file_name_save, 'w') as file:
@@ -34,7 +34,7 @@ class Background(pygame.sprite.Sprite):
         self.rect.left, self.rect.top = location
 
 BackGround = Background(
-    R'Grafics\Ground.png', [0, 0])
+    R'Grafics/Ground.png', [0, 0])
 
 def GameMenu():
     new_level = level

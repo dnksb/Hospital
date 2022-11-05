@@ -7,7 +7,7 @@ fps = 60
 size = (640, 480)
 
 def ClearSave(m):
-    file_name_save = R'Save\SaveLV.txt'
+    file_name_save = R'Save/SaveLV.txt'
     print(f'{file_name_save} clear')
 
     with open(file_name_save, 'w') as file:
@@ -15,7 +15,7 @@ def ClearSave(m):
         file.close()
 
 def SaveData(m):
-    file_name_save = R'Save\SaveLV.txt'
+    file_name_save = R'Save/SaveLV.txt'
     print(file_name_save)
 
     with open(file_name_save, 'w') as file:
@@ -32,7 +32,7 @@ class Background(pygame.sprite.Sprite):
         self.rect.left, self.rect.top = location
 
 BackGround = Background(
-    R'Grafics\GroundSave.png', [0, 0])
+    R'Grafics/GroundSave.png', [0, 0])
 
 BackMenu = pygame.Rect(40, 330, 155, 50)
 DeleteSave = pygame.Rect(40, 265, 155, 50)
